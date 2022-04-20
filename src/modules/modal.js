@@ -16,11 +16,11 @@ const modal = () => {
                 if (count <= 20) {
                     modalContent.style.left = count + '%';
                     modalContent.style.top = count * 1 + '%';
-                } else if (count <= 38) {
+                } else if (count <= 30) {
                     modalContent.style.left = count + '%';
                 } else {
                     cancelAnimationFrame(idInterval);
-                    count = 25;
+                    count = 20;
                 }
                 modalContent.style.transform = 'translateX(100px)';
             } else {
