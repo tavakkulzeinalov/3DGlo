@@ -14,26 +14,43 @@ const validation = () => {
         inputsEmail.push(document.getElementById(`form${i}-email`));
         inputsPhone.push(document.getElementById(`form${i}-phone`));
     }
+    const changeStr = (e, reg) => {
+        if (e.target.value) {
+            let str = e.target.value;
+            str = str.replace(reg, "");
+            str = str.replace(/\s{2,}/g, ' ');
+            str = str.replace(/-{2,}/g, '-');
+            str = str.trim();
+            str = str.replace(/^-|-$/g, '');
+            str = str.trim();
 
-    mess.addEventListener('input', e => {
-        e.target.value = e.target.value.replace(/[^а-яА-Я\-\s]+/, "");
+            if (e.target.type === 'text') {
+                str = str[0].toUpperCase() + str.substr(1).toLowerCase();
+            }
+            e.target.value = str;
+        }
+    }
+
+    mess.addEventListener('blur', (e) => {
+        changeStr(e, /[^а-яА-Я-\s]+/g);
+        ///[^а-яА-Я\-\s]+/
     });
 
     inputsName.forEach(input => {
-        input.addEventListener('input', e => {
-            e.target.value = e.target.value.replace(/[^а-яА-Я\-\s]+/, "");
+        input.addEventListener('blur', e => {
+            changeStr(e, /[^а-яА-Я\-\s]+/g);
         });
     });
 
     inputsEmail.forEach(input => {
-        input.addEventListener('input', e => {
-            e.target.value = e.target.value.replace(/[^a-zA-Z0-9\@\-\_\.\!\~\*\']+/, "");
+        input.addEventListener('blur', e => {
+            changeStr(e, /[^a-zA-Z0-9\@\-\_\.\!\~\*\']+/g);
         });
     });
 
     inputsPhone.forEach(input => {
-        input.addEventListener('input', e => {
-            e.target.value = e.target.value.replace(/[^0-9\-\(\)]/, "");
+        input.addEventListener('blur', e => {
+            changeStr(e, /[^0-9\-\(\)]/g);
         });
     });
 
@@ -43,7 +60,7 @@ const validation = () => {
         });
     });
 
-
+    changeStr();
 };
 
 export default validation;
