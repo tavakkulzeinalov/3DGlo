@@ -3,7 +3,8 @@ const timer = (deadline) => {
     const timerHours = document.getElementById('timer-hours');
     const timerMinutes = document.getElementById('timer-minutes');
     const timerSeconds = document.getElementById('timer-seconds');
-    const timer = document.getElementById('timer');
+    const timer = document.querySelectorAll('#timer>span');
+
 
     let interval;
 
@@ -28,11 +29,17 @@ const timer = (deadline) => {
     const updateClock = () => {
         let getTime = getTimeRemaining();
 
-        timerDays.textContent = getTime.days < 10 ? '0' + getTime.days : getTime.days;
 
-        timerHours.textContent = getTime.hours < 10 ? '0' + getTime.hours : getTime.hours;
-        timerMinutes.textContent = getTime.minutes < 10 ? '0' + getTime.minutes : getTime.minutes;
-        timerSeconds.textContent = getTime.seconds < 10 ? '0' + getTime.seconds : getTime.seconds;
+        const addingZero = () => {
+            timerDays.textContent = getTime.days < 10 ? '0' + getTime.days : getTime.days;
+            timerHours.textContent = getTime.hours < 10 ? '0' + getTime.hours : getTime.hours;
+            timerMinutes.textContent = getTime.minutes < 10 ? '0' + getTime.minutes : getTime.minutes;
+            timerSeconds.textContent = getTime.seconds < 10 ? '0' + getTime.seconds : getTime.seconds;
+        };
+        
+        addingZero();
+
+
 
         if (getTime.timeRemaining <= 0) {
             clearInterval(interval);
