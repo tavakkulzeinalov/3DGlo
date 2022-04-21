@@ -36,9 +36,8 @@ const timer = (deadline) => {
             timerMinutes.textContent = getTime.minutes < 10 ? '0' + getTime.minutes : getTime.minutes;
             timerSeconds.textContent = getTime.seconds < 10 ? '0' + getTime.seconds : getTime.seconds;
         };
-        
-        addingZero();
 
+        addingZero();
 
 
         if (getTime.timeRemaining <= 0) {
