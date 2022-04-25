@@ -3,7 +3,7 @@ import menu from './modules/menu';
 import modal from './modules/modal';
 import scroll from './modules/scroll';
 import validation from './modules/validation';
-
+import tabs from './modules/tabs';
 
 
 
@@ -13,3 +13,4 @@ menu();
 modal();
 scroll();
 validation();
+tabs();
