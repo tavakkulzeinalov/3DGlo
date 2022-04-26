@@ -15,4 +15,4 @@ modal();
 scroll();
 validation();
 tabs();
-slider();
+slider('portfolio-content', 'portfolio-item', 'portfolio-item-active', 'dot', 'dot-active', 'portfolio-btn');
