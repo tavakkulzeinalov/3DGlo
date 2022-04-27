@@ -5,6 +5,7 @@ import scroll from './modules/scroll';
 import validation from './modules/validation';
 import tabs from './modules/tabs';
 import slider from './modules/slider';
+import calc from './modules/calc';
 
 
 
@@ -16,3 +17,4 @@ scroll();
 validation();
 tabs();
 slider('portfolio-content', 'portfolio-item', 'portfolio-item-active', 'dot', 'dot-active', 'portfolio-btn');
+calc(100);
