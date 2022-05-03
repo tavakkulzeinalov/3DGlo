@@ -1,4 +1,4 @@
-const animate = ({
+export const animate = ({
     timing,
     draw,
     duration
@@ -21,8 +21,4 @@ const animate = ({
         }
 
     });
-}
-
-export {
-    animate
 };

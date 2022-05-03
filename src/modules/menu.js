@@ -1,4 +1,4 @@
-const menu = () => {
+export const menu = () => {
 	const menu = document.querySelector('menu');
 
 	const handleMenu = () => {
@@ -14,5 +14,3 @@ const menu = () => {
 		}
 	});
 };
-
-export default menu;

@@ -1,4 +1,4 @@
-const scroll = () => {
+export const scroll = () => {
 	const menuItems = document.querySelectorAll('ul>li>a');
 	const scrollBtn = document.querySelector('main>a');
 
@@ -21,5 +21,3 @@ const scroll = () => {
 		});
 	});
 };
-
-export default scroll;

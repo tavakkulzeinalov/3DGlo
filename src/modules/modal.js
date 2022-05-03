@@ -2,7 +2,7 @@ import {
 	animate
 } from './helpers';
 
-const modal = () => {
+export const modal = () => {
 	const buttons = document.querySelectorAll('.popup-btn');
 	const modal = document.querySelector('.popup');
 	const modalContent = modal.querySelector('.popup-content');
@@ -11,8 +11,6 @@ const modal = () => {
 		button.addEventListener('click', () => {
 			if (window.innerWidth > 768) {
 				modal.style.display = 'block';
-				modalContent.style.transform = 'translateX(100px)';
-
 				animate({
 					duration: 500,
 					timing(timeFraction) {
@@ -49,5 +47,3 @@ const modal = () => {
 		}
 	});
 };
-
-export default modal;

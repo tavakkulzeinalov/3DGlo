@@ -2,7 +2,7 @@ import {
     animate
 } from './helpers';
 
-const calc = (price = 100) => {
+export const calc = (price = 100) => {
     const calcBlock = document.querySelector('.calc-block');
     const calcType = document.querySelector('.calc-type');
     const calcSquare = document.querySelector('.calc-square');
@@ -53,5 +53,3 @@ const calc = (price = 100) => {
         }
     });
 };
-
-export default calc;

@@ -1,4 +1,4 @@
-const validation = () => {
+export const validation = () => {
 	const calcSquare = document.querySelector('.calc-square');
 	const calcCount = document.querySelector('.calc-count');
 	const calcDay = document.querySelector('.calc-day');
@@ -53,14 +53,9 @@ const validation = () => {
 			changeStr(e, /[^0-9\-\(\)]/g);
 		});
 	});
-
 	calcInputs.forEach(input => {
 		input.addEventListener('input', e => {
 			e.target.value = e.target.value.replace(/\D+/, "");
 		});
 	});
-
-
 };
-
-export default validation;

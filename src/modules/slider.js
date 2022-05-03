@@ -1,4 +1,4 @@
-const slider = (sliderBlockClassName, slideClassName, activeSlideClassName = 'slide-active', dotClassName, dotActiveClassName = 'dot-active', buttonClassName) => {
+export const slider = (sliderBlockClassName, slideClassName, activeSlideClassName = 'slide-active', dotClassName, dotActiveClassName = 'dot-active', buttonClassName) => {
     const sliderBlock = document.querySelector(`.${sliderBlockClassName}`);
     if (!sliderBlock) {
         return;
@@ -109,5 +109,3 @@ const slider = (sliderBlockClassName, slideClassName, activeSlideClassName = 'sl
     dots = getNewDots();
     startSlide(timeInterval);
 };
-
-export default slider;

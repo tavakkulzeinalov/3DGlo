@@ -3,9 +3,12 @@ export const sendForm = ({
     someElem = []
 }) => {
     const form = document.getElementById((formId));
+    const calcItem = document.querySelectorAll('.calc-item');
+    const total = document.getElementById('total');
+    const modal = document.querySelector('.popup');
     const loaderAnimation = document.createElement('div');
     const errorText = 'Ошибка...';
-    const successText = 'Спасибо! Наш менеджер с Вами свяжется';
+    const successText = 'Спасибо! Наш менеджер cкоро с Вами свяжется';
     const validate = (list) => {
         let success = true;
         if (list) {
@@ -26,6 +29,21 @@ export const sendForm = ({
             });
         }
         return success;
+    };
+    const nullingTheForm = () => {
+        calcItem.forEach(input => {
+            input.value = '';
+        });
+    };
+    const nullingTheTotal = () => {
+        total.textContent = 0;
+    };
+    const noneModal = () => {
+        setTimeout(() => {
+            modal.style.display = 'none';
+            loaderAnimation.style.display = 'none';
+        }, 1000);
+
     };
     const sendData = (data) => {
         return fetch('https://jsonplaceholder.typicode.com/posts', {
@@ -85,6 +103,9 @@ export const sendForm = ({
         form.addEventListener('submit', e => {
             e.preventDefault();
             submitForm();
+            nullingTheForm();
+            nullingTheTotal();
+            noneModal();
         });
     } catch (err) {
         console.log(err.message);
