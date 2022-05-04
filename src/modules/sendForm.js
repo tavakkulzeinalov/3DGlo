@@ -39,11 +39,10 @@ export const sendForm = ({
         total.textContent = 0;
     };
     const noneModal = () => {
+        modal.style.color = 'white';
         setTimeout(() => {
             modal.style.display = 'none';
-            loaderAnimation.style.display = 'none';
-        }, 1000);
-
+        }, 2000);
     };
     const sendData = (data) => {
         return fetch('https://jsonplaceholder.typicode.com/posts', {
@@ -82,18 +81,18 @@ export const sendForm = ({
             sendData(formBody)
                 .then(data => {
                     loaderAnimation.classList.remove('lds-circle');
-                    loaderAnimation.innerHTML = `<img src="images/icons/success-svgrepo-com.svg" width='20px;'/> ${successText}`;
+                    loaderAnimation.innerHTML = `<img src="images/icons/success-svgrepo-com.svg" width='45px;'/> ${successText}`;
                     formElements.forEach(input => {
                         input.value = '';
                     });
                 }).catch(error => {
                     loaderAnimation.innerHTML = '';
-                    loaderAnimation.innerHTML = `<img src="images/icons/error-close-svgrepo-com.svg" width='30px;'/> ${errorText}`;
+                    loaderAnimation.innerHTML = `<img src="images/icons/error-close-svgrepo-com (1).svg" width='45px;'/> ${errorText}`;
                 });
         } else {
             loaderAnimation.classList.remove('lds-circle');
             loaderAnimation.innerHTML = '';
-            loaderAnimation.innerHTML = `<img src="images/icons/error-close-svgrepo-com.svg" width='30px;'/> ${errorText}`;
+            loaderAnimation.innerHTML = ` <img src="images/icons/error-close-svgrepo-com (1).svg" width='45px;'/> ${errorText}`;
         }
     };
     try {
