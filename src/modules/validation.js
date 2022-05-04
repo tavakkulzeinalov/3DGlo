@@ -23,9 +23,12 @@ export const validation = () => {
 			str = str.trim();
 			str = str.replace(/^-|-$/g, '');
 			str = str.trim();
-
-			if (e.target.type === 'text') {
-				str = str[0].toUpperCase() + str.substr(1).toLowerCase();
+			try {
+				if (e.target.type === 'text') {
+					str = str[0].toUpperCase() + str.substr(1).toLowerCase();
+				}
+			} catch (e) {
+				console.log(e.message);
 			}
 			e.target.value = str;
 		}
@@ -33,7 +36,6 @@ export const validation = () => {
 
 	mess.addEventListener('blur', (e) => {
 		changeStr(e, /[^а-яА-Я-\s]+/g);
-		///[^а-яА-Я\-\s]+/
 	});
 
 	inputsName.forEach(input => {
