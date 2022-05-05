@@ -30,6 +30,21 @@ export const sendForm = ({
         }
         return success;
     };
+    const showMsg = (status, msg = '') => {
+        loaderAnimation.classList.remove('sk-circle-bounce');
+        loaderAnimation.style.color = '#fff';
+        loaderAnimation.innerHTML = '';
+
+        if (status === 'error') {
+            loaderAnimation.innerHTML = `<img src="images/icons/error-close-svgrepo-com (1).svg" width='45px;'/> ${errorText} ${msg}`;
+        } else if (status === 'success') {
+            loaderAnimation.innerHTML = `<img src="images/icons/success-svgrepo-com.svg" width='45px;'/> ${successText}`;
+        }
+
+        setTimeout(() => {
+            loaderAnimation.remove();
+        }, 3000);
+    };
     const nullingTheForm = () => {
         calcItem.forEach(input => {
             input.value = '';
@@ -80,19 +95,15 @@ export const sendForm = ({
         if (validate(formElements)) {
             sendData(formBody)
                 .then(data => {
-                    loaderAnimation.classList.remove('lds-circle');
-                    loaderAnimation.innerHTML = `<img src="images/icons/success-svgrepo-com.svg" width='45px;'/> ${successText}`;
+                    showMsg('success');
                     formElements.forEach(input => {
                         input.value = '';
                     });
-                }).catch(error => {
-                    loaderAnimation.innerHTML = '';
-                    loaderAnimation.innerHTML = `<img src="images/icons/error-close-svgrepo-com (1).svg" width='45px;'/> ${errorText}`;
+                }).catch(err => {
+                    showMsg('err', 'Данные не удалось отправить');
                 });
         } else {
-            loaderAnimation.classList.remove('lds-circle');
-            loaderAnimation.innerHTML = '';
-            loaderAnimation.innerHTML = ` <img src="images/icons/error-close-svgrepo-com (1).svg" width='45px;'/> ${errorText}`;
+            showMsg('err', 'Данные не валидны');
         }
     };
     try {

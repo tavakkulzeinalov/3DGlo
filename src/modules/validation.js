@@ -16,26 +16,28 @@ export const validation = () => {
 	}
 	const changeStr = (e, reg) => {
 		if (e.target.value) {
-			let str = e.target.value
+			let str = e.target.value;
 			str = str.replace(reg, "");
 			str = str.replace(/\s{2,}/g, ' ');
 			str = str.replace(/-{2,}/g, '-');
 			str = str.trim();
 			str = str.replace(/^-|-$/g, '');
 			str = str.trim();
-			try {
-				if (e.target.type === 'text') {
-					str = str[0].toUpperCase() + str.substr(1).toLowerCase();
-				}
-			} catch (e) {
-				console.log(e.message);
+
+			if (!str) {
+				e.target.value = '';
+				return;
+			}
+
+			if (e.target.type === 'text') {
+				str = str[0].toUpperCase() + str.substr(1).toLowerCase();
 			}
 			e.target.value = str;
 		}
 	};
 
 	mess.addEventListener('blur', (e) => {
-		changeStr(e, /[^а-яА-Я-\s]+/g);
+		changeStr(e, /[^а-яА-Я-\s0-9\(\)\.\,\:\"\!\?]+/g);
 	});
 
 	inputsName.forEach(input => {
