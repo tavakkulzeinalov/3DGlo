@@ -31,7 +31,7 @@ export const sendForm = ({
         return success;
     };
     const showMsg = (status, msg = '') => {
-        loaderAnimation.classList.remove('sk-circle-bounce');
+        loaderAnimation.classList.remove('lds-circle');
         loaderAnimation.style.color = '#fff';
         loaderAnimation.innerHTML = '';
 
